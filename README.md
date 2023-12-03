@@ -17,3 +17,13 @@ tsconfig.json需要开启
 ### nestjs实现底层Get 
 Get是一个回调函数,回调函数返回MethodDecorator,fnc的参数res,status会返回到getList的参数里面
 
+### nestjs---cli
+
+```
+npm i -g @nestjs/cli
+```
+
+```
+nest new demo //创建项目
+```
+
