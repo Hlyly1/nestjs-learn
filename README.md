@@ -27,3 +27,15 @@ npm i -g @nestjs/cli
 nest new demo //创建项目
 ```
 
+### 快捷指令生成模板
+```
+nest --help //查看命令
+```
+demo
+```
+nest g resource user //生成一套crud模板
+nset g co user //生成controller
+nest g mo user //生成module
+nest g s user  //生成server
+```
+
