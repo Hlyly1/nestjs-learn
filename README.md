@@ -39,3 +39,32 @@ nest g mo user //生成module
 nest g s user  //生成server
 ```
 
+### restful风格
+```
+get post put delete patch 
+```
+```
+//开启版本控制 main.js 开启enableVersioning
+app.enableVersioning({
+    type:VersioningType.URI
+})
+//controller开启
+@Controller({
+    path:'user',
+    version:'1'
+})
+//单个开启
+@Version("1") 需要导包Version 来自nestjs/common
+开启后地址  http://localhost:3000/v1/user
+```
+```
+//常见code编码
+200:Ok 响应成功
+304:资源未修改(缓存)
+400:参数错误
+401:身份验证失败
+403:orgin referer验证错误
+500:服务器错误
+502:上游接口问题或者服务器问题 Bad Gateway
+```
+
