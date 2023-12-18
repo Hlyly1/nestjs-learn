@@ -3,10 +3,8 @@ import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 
-@Controller({
-  path:'user',
-  version:"1"
-})
+
+@Controller('user1')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
@@ -35,4 +33,6 @@ export class UserController {
   remove(@Param('id') id: string) {
     return this.userService.remove(+id);
   }
+
+  
 }
