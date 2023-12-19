@@ -157,3 +157,34 @@ httpOnly（仅限 HTTP）：设置为 true 时，表示该 cookie 只能通过 H
 secure（安全）：设置为 true 时，表示该 cookie 只能通过 HTTPS 连接发送。这样可以增加安全性，防止在不安全的连接上传输敏感信息。
 
 maxAge（最大过期时间）：指定 cookie 的最大存活时间（以秒为单位）。设置为 null 或不设置 maxAge 时，表示该 cookie 是一个会话 cookie，仅在用户关闭浏览器时过期。如果设置了一个具体的值，表示该 cookie 将在指定的时间后过期。
+
+### Provides提供者
+
+就是在service层需要添加一个注解@Injectable()，然后在Module层将server层通在Module中通过providers进行导入,再通过Controller通过构造函数传入就可以使用service层了appService 这个名称可以随便取，然后就可以通过appService.xxx 调用server层定义的方法了（通常我们将逻辑写在service层）
+
+```js
+@Module({
+  imports: [ UserModule],
+  controllers: [AppController],
+  providers: [AppService],
+})
+```
+
+```js
+export class AppController {
+  constructor(private readonly appService: AppService) {}
+}
+```
+
+可以进行自定义名称，自定义传值  但是用的很少，也可以进行自定义工厂模式，注入多个Service
+
+### Module模块
+
+当我们需要在其他的Controller中使用其他的service ，需要在你将要使用的service的module中添加exports:[UserService] 进行导出 ，这样在其他模块就能使用另一个模块的Service了，这种方法叫做**共享模块**
+
+还要个叫全局模块@Global()进行修饰，同时需要添加exports:[UserService] 进行导出，并在app.module 进行导入注册
+
+动态模块 ： 可以传参
+
+
+
